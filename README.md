@@ -70,7 +70,7 @@ The data preprocessing scripts used for training and testing are available in `n
 
 The processed datasets are available on Zenodo: https://zenodo.org/records/19600852
 
-The downloaded archive is approximately 10.6 GB in size. After downloading, extract the archive with:
+The downloaded archive is approximately 11 GB in size. After downloading, extract the archive with:
 
 ```bash
 mkdir -p /path/to/your/data/root
