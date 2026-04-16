@@ -379,18 +379,6 @@ class Rotation:
             r1: Rotation,
             r2: Rotation,
     ) -> Rotation:
-        """
-        根据一个布尔条件张量，从两个Rotation对象中选择性地创建一个新的Rotation对象。
-        类似于 torch.where。
-
-        Args:
-            condition (torch.Tensor): 布尔张量，用于选择。
-            r1 (Rotation): 当条件为True时选择的Rotation。
-            r2 (Rotation): 当条件为False时选择的Rotation。
-
-        Returns:
-            Rotation: 组合后的新Rotation对象。
-        """
         rot_mats1 = r1.get_rot_mats()
         rot_mats2 = r2.get_rot_mats()
 
@@ -1252,18 +1240,6 @@ class Rigid:
             t1: Rigid,
             t2: Rigid,
     ) -> Rigid:
-        """
-        根据一个布尔条件张量，从两个Rigid对象中选择性地创建一个新的Rigid对象。
-        类似于 torch.where。
-
-        Args:
-            condition (torch.Tensor): 布尔张量，用于选择。
-            t1 (Rigid): 当条件为True时选择的Rigid。
-            t2 (Rigid): 当条件为False时选择的Rigid。
-
-        Returns:
-            Rigid: 组合后的新Rigid对象。
-        """
         new_rots = Rotation.where(condition, t1._rots, t2._rots)
 
         trans_condition = condition
@@ -1461,57 +1437,3 @@ class Rigid:
         detached_rots = self._rots.detach()
         detached_trans = self._trans.detach()
         return Rigid(rots=detached_rots, trans=detached_trans)
-
-
-def rotation_vector_to_matrix(rotation_vector: torch.Tensor) -> torch.Tensor:
-
-    # 计算旋转角度 theta
-    angle = torch.linalg.norm(rotation_vector, dim=-1, keepdim=True)
-
-    axis = F.normalize(rotation_vector, dim=-1, eps=1e-8)
-
-    # 计算 sin(theta) 和 cos(theta)
-    sin_angle = torch.sin(angle)
-    cos_angle = torch.cos(angle)
-
-    # K (cross-product matrix)
-    # K = [[ 0, -z,  y],
-    #      [ z,  0, -x],
-    #      [-y,  x,  0]]
-    K = torch.zeros(*rotation_vector.shape[:-1], 3, 3, device=rotation_vector.device)
-    K[..., 0, 1] = -axis[..., 2]
-    K[..., 0, 2] =  axis[..., 1]
-    K[..., 1, 0] =  axis[..., 2]
-    K[..., 1, 2] = -axis[..., 0]
-    K[..., 2, 0] = -axis[..., 1]
-    K[..., 2, 1] =  axis[..., 0]
-
-    K_sq = torch.matmul(K, K)
-    identity_matrix = torch.eye(3, device=rotation_vector.device).expand_as(K)
-    rotation_matrix = identity_matrix + sin_angle.unsqueeze(-1) * K + (1 - cos_angle.unsqueeze(-1)) * K_sq
-
-    return rotation_matrix
-
-
-def generate_random_rotation_matrix(device):
-    """生成一个随机的 3x3 旋转矩阵"""
-    # 随机生成一个四元数 (w, x, y, z)
-    q = torch.randn(4, device=device)
-    q = q / torch.linalg.norm(q)
-    w, x, y, z = q[0], q[1], q[2], q[3]
-
-    # 将四元数转换为 3x3 旋转矩阵
-    R = torch.zeros(3, 3, device=device)
-    R[0, 0] = 1 - 2*y*y - 2*z*z
-    R[0, 1] = 2*x*y - 2*z*w
-    R[0, 2] = 2*x*z + 2*y*w
-
-    R[1, 0] = 2*x*y + 2*z*w
-    R[1, 1] = 1 - 2*x*x - 2*z*z
-    R[1, 2] = 2*y*z - 2*x*w
-
-    R[2, 0] = 2*x*z - 2*y*w
-    R[2, 1] = 2*y*z + 2*x*w
-    R[2, 2] = 1 - 2*x*x - 2*y*y
-
-    return R
