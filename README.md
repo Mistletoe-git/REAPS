@@ -20,7 +20,7 @@ Here we provide a simple inference command for peptide sequence design from a gi
 
 ### 📦 Model checkpoints
 
-Pretrained model checkpoints are available on Zenodo: https://zenodo.org/records/19591251
+Pretrained model checkpoints are available on Zenodo: https://zenodo.org/records/19591251.
 
 Download the archive and extract it into the `checkpoints/` directory:
 
@@ -68,7 +68,7 @@ python inference.py \
 ### 📦 Data preprocessing
 The data preprocessing scripts used for training and testing are available in `notebooks/`.
 
-The processed datasets are available on Zenodo: https://zenodo.org/records/19600852
+The processed datasets are available on Zenodo: https://zenodo.org/records/19600852.
 
 The downloaded archive is approximately 11 GB in size. After downloading, extract the archive with:
 
