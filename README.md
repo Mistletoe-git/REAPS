@@ -16,7 +16,7 @@ pip install -e .
 
 ## ⚡ Inference
 
-Here we provide a simple inference command for peptide sequence design from a given receptor–peptide complex structure.
+Here we provide a simple inference command for peptide sequence design from a given protein–peptide complex structure. For optimal performance, we recommend using the model with a relatively low backbone noise level.
 
 ### 📦 Model checkpoints
 
