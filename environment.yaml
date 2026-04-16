@@ -1,0 +1,40 @@
+name: REAPS
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip>=23
+  - numpy=1.23.5
+  - pandas=2.3.0
+  - scipy=1.15.3
+  - biopython=1.79
+  - tqdm
+  - rich=13.*
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu121
+      - torch==2.4.0
+      - torchvision==0.19.0
+      - torchaudio==2.4.0
+
+      - --find-links https://data.pyg.org/whl/torch-2.4.0+cu121.html
+      - torch-scatter
+      - torch-sparse
+      - torch-cluster
+      - torch-spline-conv
+      - pyg-lib
+
+      - --index-url https://pypi.org/simple
+      - setuptools<70.0.0 
+      - lightning==2.5.4
+      - torchmetrics
+      - omegaconf==2.3.0
+      - hydra-core==1.3.2
+      - hydra-optuna-sweeper==1.2.0
+      - hydra-colorlog==1.2.0
+      - rootutils
+      - transformers==4.53.0
+      - torch-geometric==2.6.1
+      - wandb

@@ -1,0 +1,23 @@
+# configs/test.yaml
+# @package _global_
+
+defaults:
+  - _self_
+  - data: PPI_dataset
+  - model: REAPS
+  - callbacks: default
+  - logger: null
+  - trainer: gpu
+  - paths: default
+  - extras: default
+  - hydra: default
+
+task_name: "test"
+tags: ["REAPS", "test"]
+
+train: False
+test: True
+ckpt_path: ${paths.root_dir}/checkpoints/REAPS_n0.02_pepFT.ckpt
+seed: 3407
+
+output_dir: ${paths.log_dir}/test

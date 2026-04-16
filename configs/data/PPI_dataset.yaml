@@ -1,0 +1,16 @@
+_target_: REAPS.data.PPI_datamodule.PPI_DataModule
+
+data_dirs:
+  - ${paths.data_dir}/linear/multiChain_dataset_20250917/multiChain_processed_pkls
+  - ${paths.data_dir}/linear/PPQ/PPQ_processed_pkls
+
+splits_json_path: ${paths.data_dir}/linear/split_workflow/for_test/data_splits_optimized_test.json
+cluster_map_path: ${paths.data_dir}/linear/split_workflow/train_cluster_map.json  # During the pre-training stage, dynamic batch sampling is employed.
+
+mode: "fine-tuning"  # optional: [pre-training, fine-tuning]
+
+max_tokens_per_batch: 14000 # batch_size
+max_length: 6000
+num_workers: 8
+pin_memory: True
+seed: 42

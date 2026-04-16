@@ -1,0 +1,12 @@
+_target_: REAPS.data.CPCore_datamodule.CPCore_DataModule
+
+data_dirs:
+  - ${paths.data_dir}/cyclic/CPCore_processed_pkls
+
+split_json_path: ${paths.data_dir}/cyclic/split_workflow/data_splits_purified_optimized.json
+
+max_tokens_per_batch: 14000
+max_length: 8000
+num_workers: 8
+pin_memory: True
+seed: 3407
