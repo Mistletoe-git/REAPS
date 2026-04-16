@@ -57,7 +57,7 @@ python inference.py \
 
 ### 📌 Notes
 
-- The input PDB file should contain both receptor and peptide chains.
+- The input PDB file should contain both receptor and peptide chains, with at least two chains present.
 - `--peptide_chain_id` specifies the peptide chain to be designed.
 - Use a checkpoint that matches the selected design mode:
   - `linear` mode → checkpoint for linear peptide binder sequence design
@@ -81,7 +81,7 @@ tar -xvzf REAPS_datasets.tar.gz -C /path/to/your/data/root
 
 REAPS uses a Hydra-based training pipeline built on PyTorch Lightning. Training is launched through the main training script together with configuration files under `configs/`.
 
-#### 🔥 Pre-training
+#### 🔥 Pre-training on multi-chain protein complexes
 
 ```bash
 python train.py \
