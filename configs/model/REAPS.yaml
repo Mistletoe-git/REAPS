@@ -17,7 +17,7 @@ edge_layer: 3
 
 dropout: 0.10
 mask_rate: 0.15
-lr: 5.0e-5                  # pre-training -> 1.0e-3 / linear_fine-tuning -> 1.0e-5 / cyclic_fine-tuning -> 1.0e-4
+lr: 5.0e-5                  # pre-training -> 1.0e-3 / linear_fine-tuning -> 1.0e-5 / cyclic_fine-tuning -> 5.0e-5
 weight_decay: 0.1
 
 vocab_size: 21
