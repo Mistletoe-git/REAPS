@@ -94,6 +94,7 @@ python train.py \
   model.is_fine_tuning=False \
   model.backbone_noise_scale=0.02 \
   model.lr=1e-3 \
+  model.weight_decay=0.01 \
   trainer.max_epochs=200 \
   logger.wandb.offline=True
 ```
@@ -112,6 +113,7 @@ python train.py \
   model.is_fine_tuning=True \
   model.backbone_noise_scale=0.02 \
   model.lr=1e-5 \
+  model.weight_decay=0.1 \
   trainer.max_epochs=50 \
   logger.wandb.offline=True
 ```
@@ -129,6 +131,7 @@ python train.py \
   model.is_fine_tuning=True \
   model.backbone_noise_scale=0.02 \
   model.lr=5e-5 \
+  model.weight_decay=0.1 \
   trainer.max_epochs=50 \
   logger.wandb.offline=True
 ```
