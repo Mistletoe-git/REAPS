@@ -3,7 +3,7 @@ _target_: REAPS.models.REAPS_model.REAPS_Model
 ablation_mode: False        # True for ablation Receptor_Aware Mechanism.
 is_fine_tuning: False
 
-backbone_noise_scale: 0.02  # 0.02 /0.10 /0.20 /0.30, this parameter is used for training.
+coords_noise_scale: 0.02  # 0.02 /0.10 /0.20 /0.30, this parameter is used for training.
 k_neighbors: 32
 virtual_frame_num: 3
 fourier_dim: 16
