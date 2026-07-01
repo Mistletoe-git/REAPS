@@ -92,7 +92,7 @@ python train.py \
   data.mode=pre-training \
   data.max_tokens_per_batch=14000 \
   model.is_fine_tuning=False \
-  model.backbone_noise_scale=0.02 \
+  model.coords_noise_scale=0.02 \
   model.lr=1e-3 \
   model.weight_decay=0.01 \
   trainer.max_epochs=200 \
@@ -111,7 +111,7 @@ python train.py \
   data.mode=fine-tuning \
   data.max_tokens_per_batch=6000 \
   model.is_fine_tuning=True \
-  model.backbone_noise_scale=0.02 \
+  model.coords_noise_scale=0.02 \
   model.lr=1e-5 \
   model.weight_decay=0.1 \
   trainer.max_epochs=50 \
@@ -129,7 +129,7 @@ python train.py \
   data=CPCore_dataset \
   data.max_tokens_per_batch=12000 \
   model.is_fine_tuning=True \
-  model.backbone_noise_scale=0.02 \
+  model.coords_noise_scale=0.02 \
   model.lr=5e-5 \
   model.weight_decay=0.1 \
   trainer.max_epochs=50 \
