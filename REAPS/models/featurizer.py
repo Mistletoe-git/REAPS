@@ -37,12 +37,12 @@ def positional_embeddings(E_idx, num_embeddings):
 
 
 class GraphFeaturizer(nn.Module):
-    def __init__(self, ablation_mode: bool, backbone_noise_scale: float, k_neighbors: int, virtual_frame_num: int,
+    def __init__(self, ablation_mode: bool, coords_noise_scale: float, k_neighbors: int, virtual_frame_num: int,
                  fourier_dim: int, dropout: float, positional_buckets: int, E_idx_embed_dim: int, hidden_dim: int, num_heads: int):
 
         super(GraphFeaturizer, self).__init__()
         self.ablation_mode = ablation_mode # True for ablation experiment
-        self.backbone_noise_scale = backbone_noise_scale
+        self.coords_noise_scale = coords_noise_scale
         self.k_neighbors = k_neighbors
         self.virtual_frame_num = virtual_frame_num
         self.positional_buckets = positional_buckets
@@ -381,8 +381,8 @@ class GraphFeaturizer(nn.Module):
         ], dim=0)
         is_receptor_residue = ~is_peptide_residue
 
-        if self.training and self.backbone_noise_scale != 0.0:
-            noise = torch.randn_like(xyz_37) * self.backbone_noise_scale
+        if self.training and self.coords_noise_scale != 0.0:
+            noise = torch.randn_like(xyz_37) * self.coords_noise_scale
             xyz_37 = xyz_37 + noise
 
         N, CA, C = xyz_37[:, 0], xyz_37[:, 1], xyz_37[:, 2]
