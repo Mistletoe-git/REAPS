@@ -15,7 +15,7 @@ from REAPS.models.module import (
 )
 
 class REAPS_Model(LightningModule):
-    def __init__(self, ablation_mode: bool, is_fine_tuning: bool, backbone_noise_scale: float, k_neighbors: int,
+    def __init__(self, ablation_mode: bool, is_fine_tuning: bool, coords_noise_scale: float, k_neighbors: int,
                  virtual_frame_num: int, fourier_dim: int, positional_buckets: int, E_idx_embed_dim: int,
                  hidden_dim: int, num_heads: int, dropout: float, geo_layer: int, edge_layer: int,
                  encoder_layer: int, mask_rate: float, vocab_size: int, lr: float, weight_decay: float, **kwargs):
@@ -32,7 +32,7 @@ class REAPS_Model(LightningModule):
             pass
 
         self.featurizer = GraphFeaturizer(
-            ablation_mode=ablation_mode, backbone_noise_scale=backbone_noise_scale, k_neighbors=k_neighbors,
+            ablation_mode=ablation_mode, coords_noise_scale=coords_noise_scale, k_neighbors=k_neighbors,
             virtual_frame_num=virtual_frame_num, fourier_dim=fourier_dim, positional_buckets=positional_buckets,
             E_idx_embed_dim=E_idx_embed_dim, hidden_dim=hidden_dim, num_heads=num_heads, dropout=dropout
         )
