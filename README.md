@@ -3,7 +3,7 @@
 REAPS is a receptor-aware geometric graph neural network for peptide binder sequence design.  
 It reframes peptide design as a conditional sequence generation problem by treating the receptor as a fully observable all-atom context, enabling the design of both linear and macrocyclic peptide binders.
 
-![REAPS architecture](docs/REAPS.jpg)
+![REAPS architecture](docs/REAPS.png)
 
 ## 🔧 Installation
 
