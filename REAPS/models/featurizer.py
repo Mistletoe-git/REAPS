@@ -37,11 +37,10 @@ def positional_embeddings(E_idx, num_embeddings):
 
 
 class GraphFeaturizer(nn.Module):
-    def __init__(self, ablation_mode: bool, coords_noise_scale: float, k_neighbors: int, virtual_frame_num: int,
+    def __init__(self, coords_noise_scale: float, k_neighbors: int, virtual_frame_num: int,
                  fourier_dim: int, dropout: float, positional_buckets: int, E_idx_embed_dim: int, hidden_dim: int, num_heads: int):
 
         super(GraphFeaturizer, self).__init__()
-        self.ablation_mode = ablation_mode # True for ablation experiment
         self.coords_noise_scale = coords_noise_scale
         self.k_neighbors = k_neighbors
         self.virtual_frame_num = virtual_frame_num
@@ -415,10 +414,7 @@ class GraphFeaturizer(nn.Module):
         T_g = Rigid(Rotation(rot_g), trans_g)
         T_all = Rigid.cat([T, T_g], dim=0)
 
-        if self.ablation_mode:  # ablation receptor_aware
-            V_sidechain = torch.zeros(len(RP_S), 12, device=device, dtype=torch.float)
-        else:
-            V_sidechain = self._compute_chi_angles(RP_S, xyz_37, xyz_37_m, is_peptide_residue)
+        V_sidechain = self._compute_chi_angles(RP_S, xyz_37, xyz_37_m, is_peptide_residue)
 
         X = xyz_37[:, self.bb_indices, :]
         diff_X = F.pad(X.reshape(-1, 3).diff(dim=0), (0, 0, 1, 0)).reshape(num_real_nodes, -1, 3)
@@ -461,7 +457,7 @@ class GraphFeaturizer(nn.Module):
         interface_E_idx_all = E_idx[:, is_interface_mask]
         pooled_vectors = _E_local.new_zeros(interface_E_idx_all.shape[1], 3 * self.num_heads)
 
-        should_compute_attention = (interface_E_idx_all.shape[1] > 0) and (not self.ablation_mode)
+        should_compute_attention = interface_E_idx_all.shape[1] > 0
 
         if should_compute_attention:
             peptide_mask_src = is_peptide_residue[interface_E_idx_all[0]]
