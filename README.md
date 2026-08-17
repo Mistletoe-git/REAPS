@@ -35,7 +35,7 @@ tar -xvzf REAPS_ckpts.tar.gz -C checkpoints/
 python inference.py \
   --pdb_file example/1T79.pdb \
   --peptide_chain_id B \
-  --checkpoint_path checkpoints/REAPS_n0.02_pepFT.ckpt \
+  --checkpoint_path checkpoints/REAPS_n0.02_linearFT.ckpt \
   --fasta_output_path outputs \
   --num_samples 8 \
   --temperature 0.2 \
