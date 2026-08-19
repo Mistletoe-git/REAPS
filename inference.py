@@ -402,7 +402,7 @@ def main():
                         help="Path to input PDB file")
     parser.add_argument("--peptide_chain_id", type=str, default="B",
                         help="Chain ID to be treated as the peptide")
-    parser.add_argument("--checkpoint_path", type=str, default="checkpoints/REAPS_n0.02_pepFT.ckpt",
+    parser.add_argument("--checkpoint_path", type=str, default="checkpoints/REAPS_n0.02_linearFT.ckpt",
                         help="Path to model weights")
     parser.add_argument("--model_config_path", type=str, default="configs/model/REAPS.yaml")
     parser.add_argument("--fasta_output_path", type=str, default="outputs")
