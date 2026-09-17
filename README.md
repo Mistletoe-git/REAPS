@@ -152,7 +152,7 @@ The source code of UniIF is available at https://github.com/A4Bio/ProteinInvBenc
 
 ## ✏ Citation
 
-If you use REAPS in your research, please cite our paper:
+If REAPS is relevant to your work, please cite our paper:
 
 ```bibtex
 @article{qiu2026reaps,
