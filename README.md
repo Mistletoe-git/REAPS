@@ -1,8 +1,8 @@
-# REAPS: An All-Atom Receptor-Aware Geometric Deep Learning Framework for *De novo* Design of Linear and Macrocyclic Peptide Binders
+# REAPS: An All-Atom Receptor-Aware Geometric Deep Learning Framework for *De Novo* Design of Linear and Macrocyclic Peptide Binders
 
 REAPS is an all-atom receptor-aware geometric graph neural network for sequence design of linear and macrocyclic peptide binders.  
 
-It reframes peptide design as a conditional sequence generation problem by treating the receptor as a fully observable all-atom context, enabling the design of both linear and macrocyclic peptide binders.
+It reframes peptide binder sequence design as a conditional sequence generation problem by treating the receptor as a fully observable all-atom context, enabling receptor-aware design of both linear and macrocyclic peptide binders.
 
 ![REAPS architecture](docs/REAPS.jpg)
 
@@ -17,7 +17,7 @@ pip install -e .
 
 ## ⚡ Inference
 
-Here we provide a simple inference command for peptide sequence design from a given protein–peptide complex structure. For optimal performance, we recommend using a checkpoint trained with a relatively low noise level.
+We provide example inference commands for peptide binder sequence design from a given protein–peptide complex structure. For optimal performance, we recommend using a checkpoint trained with a relatively low coordinate noise level (such as 0.02 Å).
 
 ### 📦 Model checkpoints
 
@@ -82,7 +82,7 @@ tar -xvzf REAPS_datasets.tar.gz -C /path/to/your/data/root
 
 REAPS uses a Hydra-based training pipeline built on PyTorch Lightning. Training is launched through the main training script together with configuration files under `configs/`.
 
-#### 🔥 Pre-training on multi-chain protein complexes
+#### 🔥 Pretraining on multichain protein complexes
 
 ```bash
 python train.py \
@@ -134,19 +134,19 @@ python train.py \
   logger.wandb.offline=True
 ```
 
-## 🧪 NK3R Peptide Binder Design via Iterative Hallucination
+## 🧪 NK3R peptide binder design via iterative hallucination
 
 We provide a Jupyter notebook that reproduces the NK3R peptide binder design pipeline described in the paper.
 
 The notebook is located at: `NK3R_hallu_pep_binder_design/NK3R_Xpep_binder_design_pipeline.ipynb`
 
-This notebook shows how REAPS is integrated into an iterative hallucination pipeline for peptide binder design, including backbone generation, receptor-conditioned sequence design, and multi-round structural refinement.
+This notebook shows how REAPS is integrated into an iterative hallucination pipeline for peptide binder design, including scaffold hallucination, REAPS-guided sequence design, and iterative structural refinement.
 
 Running this pipeline requires additional dependencies, including [Boltz-2](https://github.com/jwohlwend/boltz), [PyRosetta](https://www.pyrosetta.org/), [ColabFold](https://github.com/YoshitakaMo/localcolabfold), and [HighFold](https://github.com/hongliangduan/HighFold).
 
 ## 🙏 Acknowledgements
 
-The core implementation of this repository is built upon [UniIF](https://arxiv.org/abs/2405.18968), with modifications and extensions for receptor-aware peptide binder design.
+The core implementation of this repository is built upon [UniIF](https://arxiv.org/abs/2405.18968), with modifications and extensions for all-atom receptor-aware peptide binder sequence design.
 
 The source code of UniIF is available at https://github.com/A4Bio/ProteinInvBench. We sincerely thank the authors for their valuable contributions to the community.
 
@@ -163,3 +163,4 @@ If REAPS is relevant to your work, please cite our paper:
   doi     = {10.1021/acs.jcim.6c02057},
   url     = {https://doi.org/10.1021/acs.jcim.6c02057}
 }
+```
