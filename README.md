@@ -1,9 +1,9 @@
-# 🔬 REAPS
+# REAPS: An All-Atom Receptor-Aware Geometric Deep Learning Framework for *De novo* Design of Linear and Macrocyclic Peptide Binders
 
-REAPS is a receptor-aware geometric graph neural network for peptide binder sequence design.  
+REAPS is an all-atom receptor-aware geometric graph neural network for sequence design of linear and macrocyclic peptide binders.  
 It reframes peptide design as a conditional sequence generation problem by treating the receptor as a fully observable all-atom context, enabling the design of both linear and macrocyclic peptide binders.
 
-![REAPS architecture](docs/REAPS.png)
+![REAPS architecture](docs/REAPS.jpg)
 
 ## 🔧 Installation
 
@@ -148,3 +148,17 @@ Running this pipeline requires additional dependencies, including [Boltz-2](http
 The core implementation of this repository is built upon [UniIF](https://arxiv.org/abs/2405.18968), with modifications and extensions for receptor-aware peptide binder design.
 
 The source code of UniIF is available at https://github.com/A4Bio/ProteinInvBench. We sincerely thank the authors for their valuable contributions to the community.
+
+## ✏ Citation
+
+If you use REAPS in your research, please cite our paper:
+
+```bibtex
+@article{qiu2026reaps,
+  title   = {REAPS: An All-Atom Receptor-Aware Geometric Deep Learning Framework for De Novo Design of Linear and Macrocyclic Peptide Binders},
+  author  = {Qiu, Yongkang and Qiao, Jingxin and Zhu, Lengjing and Du, Le and Yang, Shengyong and Zou, Jun},
+  journal = {Journal of Chemical Information and Modeling},
+  year    = {2026},
+  doi     = {10.1021/acs.jcim.6c02057},
+  url     = {https://doi.org/10.1021/acs.jcim.6c02057}
+}
