@@ -1,6 +1,7 @@
 # REAPS: An All-Atom Receptor-Aware Geometric Deep Learning Framework for *De novo* Design of Linear and Macrocyclic Peptide Binders
 
 REAPS is an all-atom receptor-aware geometric graph neural network for sequence design of linear and macrocyclic peptide binders.  
+
 It reframes peptide design as a conditional sequence generation problem by treating the receptor as a fully observable all-atom context, enabling the design of both linear and macrocyclic peptide binders.
 
 ![REAPS architecture](docs/REAPS.jpg)
