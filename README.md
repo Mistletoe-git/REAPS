@@ -82,7 +82,7 @@ tar -xvzf REAPS_datasets.tar.gz -C /path/to/your/data/root
 
 REAPS uses a Hydra-based training pipeline built on PyTorch Lightning. Training is launched through the main training script together with configuration files under `configs/`.
 
-#### 🔥 Pretraining on multichain protein complexes
+### 🔥 Pretraining on multichain protein complexes
 
 ```bash
 python train.py \
@@ -99,7 +99,7 @@ python train.py \
   logger.wandb.offline=True
 ```
 
-#### 📏 Linear peptide binder sequence design fine-tuning
+### 📏 Linear peptide binder sequence design fine-tuning
 
 ```bash
 python train.py \
@@ -117,7 +117,7 @@ python train.py \
   logger.wandb.offline=True
 ```
 
-#### ⭕ Macrocyclic peptide binder sequence design fine-tuning
+### ⭕ Macrocyclic peptide binder sequence design fine-tuning
 
 ```bash
 python train.py \
