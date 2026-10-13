@@ -160,6 +160,9 @@ If REAPS is relevant to your work, please consider citing our paper:
   author  = {Qiu, Yongkang and Qiao, Jingxin and Zhu, Lengjing and Du, Le and Yang, Shengyong and Zou, Jun},
   journal = {Journal of Chemical Information and Modeling},
   year    = {2026},
+  volume  = {66},
+  number  = {19},
+  pages   = {12477--12491},
   doi     = {10.1021/acs.jcim.6c02057},
   url     = {https://doi.org/10.1021/acs.jcim.6c02057}
 }
